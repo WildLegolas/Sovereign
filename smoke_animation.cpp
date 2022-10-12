@@ -115,7 +115,7 @@ void Animation_section(){
 void welcome(){
 	std::cout << " " << std::endl;
 	std::fstream MenuArt;
-	MenuArt.open("SovIMG2", std::ios::in);
+	MenuArt.open("SovIMG3", std::ios::in);
 	if (MenuArt.is_open()){
 		std::string line;
 		int current_line = 0;
@@ -157,9 +157,24 @@ int main(){
 
     welcome();
 	Animation_section();
-	//std::cin.get();	//press key to continue
-	std::system("cls");
-	loadingSymbol();
 	std::cin.get();	//press key to continue
+	std::system("cls");
+
+	// user interface prompt
+
+	std::string input;
+
+    while (getline(std::cin, input) && input != "quit" && input != "\n") // "\n" exception makes sure the unrecognized command message isnt displayed after getting past the title screen
+    {
+        if (input == "Hello")
+            std::cout << "Hello world!\n";
+        else if (input == "balls")
+        {
+            std::cout << "Special message" << "\n";
+        }
+        else
+            std::cout << "Unrecognized command: " << input << "\n";
+    }
+
 
 }
